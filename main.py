@@ -4,7 +4,7 @@ import pandas as pd
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 import json
 
-API_TOKEN = '6227864961:AAFQXj1gP9k1Ppz4bYDk2ktmTEWTN12lIK0'
+API_TOKEN = ''
 
 bot = telebot.TeleBot(API_TOKEN)
 
@@ -59,8 +59,7 @@ def process_answer(message):
             msg = bot.send_message(message.chat.id, questions.question[user_q_pos[message.chat.id]])
             bot.register_next_step_handler(msg, process_answer)
         else:
-            bot.send_message(message.chat.id, "Ваши ответы: " + str(user_q_answers[message.chat.id]), )
-
+            
             score = []
             user_ie = 0
             user_sn = 0
@@ -72,25 +71,25 @@ def process_answer(message):
 
 
             for i in range(0, len(score1), 7):
-                if score1[i] in "aа":
+                if score1[i] in "aAАа":
                     user_ie += 1
             for i in range(1, len(score1), 7):
-                if score1[i] in "aа":
+                if score1[i] in "aAАа":
                     user_sn += 1
             for i in range(2, len(score1), 7):
-                if score1[i] in "aа":
+                if score1[i] in "aAАа":
                     user_sn += 1
             for i in range(3, len(score1), 7):
-                if score1[i] in "aа":
+                if score1[i] in "aAАа":
                     user_tf += 1
             for i in range(4, len(score1), 7):
-                if score1[i] in "aа":
+                if score1[i] in "aAАа":
                     user_tf += 1
             for i in range(5, len(score1), 7):
-                if score1[i] in "aа":
+                if score1[i] in "aAАа":
                     user_jp += 1
             for i in range(6, len(score1), 7):
-                if score1[i] in "aа":
+                if score1[i] in "aAАа":
                     user_jp += 1
             if user_ie > 5:
                 user_i = 'E'
@@ -117,7 +116,7 @@ def process_answer(message):
             id = message.from_user.id
             file = open(str(id)+'.txt', 'w')
             # Записываем
-            file.write("User: {}, id: {}, result: {}\n".format(user, id, personality_type))
+            file.write("User: {}, id: {}, result: {},answes: {}\n".format(user, id, personality_type,str(user_q_answers[message.chat.id])))
             file.close()
 
 

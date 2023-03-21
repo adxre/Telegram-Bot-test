@@ -2,7 +2,6 @@ import telebot
 from telebot import types
 import pandas as pd
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
-import json
 
 API_TOKEN = ''
 
@@ -59,7 +58,7 @@ def process_answer(message):
             msg = bot.send_message(message.chat.id, questions.question[user_q_pos[message.chat.id]])
             bot.register_next_step_handler(msg, process_answer)
         else:
-            
+
             score = []
             user_ie = 0
             user_sn = 0

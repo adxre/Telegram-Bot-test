@@ -11,7 +11,7 @@ bot = telebot.TeleBot(API_TOKEN)
 user_q_pos = {}
 user_q_answers = {}
 
-questions = pd.read_csv('questions2.csv')
+questions = pd.read_csv('questions3.csv')
 questions_size = questions.shape[0]
 
 
@@ -117,7 +117,7 @@ def process_answer(message):
             id = message.from_user.id
             file = open(str(id)+'.txt', 'w')
             # Записываем
-            file.write("User: {}, id: {},result: {}\n".format(user, id, personality_type))
+            file.write("User: {}, id: {}, result: {}\n".format(user, id, personality_type))
             file.close()
 
 

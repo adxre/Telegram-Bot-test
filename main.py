@@ -10,7 +10,7 @@ bot = telebot.TeleBot(API_TOKEN)
 user_q_pos = {}
 user_q_answers = {}
 
-questions = pd.read_csv('questions3.csv')
+questions = pd.read_csv('questions.csv')
 questions_size = questions.shape[0]
 
 
